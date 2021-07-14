@@ -30,8 +30,8 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class PharmacyMedicineController {
 	
-	@Autowired
-	UserData admin;
+	//@Autowired
+	//UserData admin;
 	
 	private static List<String> revokedTokens=new ArrayList<String>();
 	
@@ -79,8 +79,6 @@ public class PharmacyMedicineController {
 		}
 		log.info("Ending getHomePage");
 		return new ModelAndView("login");
-		//ModelAndView mv=new ModelAndView("home");
-		//return mv;
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -94,8 +92,6 @@ public class PharmacyMedicineController {
 		}
 		log.info("Ending showRepSch");
 		return new ModelAndView("login");
-		//ModelAndView mv=new ModelAndView("datepage");
-		//return mv;
 	}
 	
 	@GetMapping("/checkSchedules")
@@ -109,13 +105,11 @@ public class PharmacyMedicineController {
 			}
 			map.addAttribute("schedule",schedule);
 			mv.addObject(schedule);
-		//mv.addObject("Date",date);
 			return mv;
 		}
 		log.info("Ending showRepSch");
 		mv.setViewName("login");
 		return mv;
-		//return new ModelAndView("login");
 	}
 	
 	

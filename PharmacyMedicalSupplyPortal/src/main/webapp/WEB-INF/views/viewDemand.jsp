@@ -15,13 +15,7 @@
     </style>
 </head>
 <body>
-    <!-- <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#" style="margin-left: 20px;">
-          <img src="https://images.vexels.com/media/users/3/136559/isolated/preview/624dd0a951a1e8a118215b1b24a0da59-pharmacy-logo-by-vexels.png" width="30" height="30" class="d-inline-block align-top" alt="">
-          Genesis MedLabs
-        </a>
-        <form action="/Home"><button type="button float-right" style="margin-right: 20px;" class="btn btn-outline-light">Home</button></form>
-    </nav> -->
+    
     <%@ include file="common/header.jsp"%>
       <br>
     <div class="container">

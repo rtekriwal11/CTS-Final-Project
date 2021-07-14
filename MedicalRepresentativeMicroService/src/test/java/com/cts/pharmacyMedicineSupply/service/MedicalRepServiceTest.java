@@ -16,16 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.cts.pharmacyMedicineSupply.model.MedicalRep;
 
 @ExtendWith(MockitoExtension.class)
-class MedicalRepServiceTest {
+public class MedicalRepServiceTest {
 	
 	@InjectMocks
 	MedicalRepService medicalRepService;
-	@BeforeClass
-	public void initialise(MedicalRepService medicalRepService) {
-		//medicalRepService=new MedicalRepService();
-		this.medicalRepService=medicalRepService;
-	}
 	
+	 @BeforeClass public void initialise(MedicalRepService medicalRepService) {
+	 this.medicalRepService=medicalRepService; 
+	 }
 	
 	@Test
 	public void TestsendRep() {

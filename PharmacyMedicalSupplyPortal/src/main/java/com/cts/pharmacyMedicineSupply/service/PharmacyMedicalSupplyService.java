@@ -30,9 +30,8 @@ public class PharmacyMedicalSupplyService {
 			warning.addAttribute("errormsg", errmsg);
 			return "login";
 		}
-		//session.setAttribute("token", "Bearer " + res.getAuthToken());
 		session.setAttribute("token",res.getAuthToken());
-		session.setAttribute("memberId", res.getUserid());
+		//session.setAttribute("memberId", res.getUserid());
 		return getHomePage((String) session.getAttribute("token"));
 	}
 	

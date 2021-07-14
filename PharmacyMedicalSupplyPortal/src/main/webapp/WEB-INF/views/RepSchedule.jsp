@@ -33,8 +33,6 @@ font-weight:bold;}
 </style>
 </head>
 <body>
-	<%-- HEADERS TO BE INCLUDED
-	<%@ include file="common/customerHeaderHome.jsp"%> --%>
 	<%@ include file="common/header.jsp"%>
 	<h4>REPRESENTATIVES MEETING SCHEDULE</h4>
 <table class="table table-hover" style="margin-top:124px">
@@ -63,6 +61,5 @@ font-weight:bold;}
 		</c:forEach>
 	</tbody>
 </table>
-<%@ include file="common/footer.jsp" %>
 </body>
 </html>

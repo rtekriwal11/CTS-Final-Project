@@ -11,7 +11,7 @@
     	background-size: 1030px 650px;
     }
     th,td{
-    color:white;
+    color:black;
     font-weight:bold;
     font-size:18px;
     }
@@ -19,16 +19,12 @@
 </head>
 
 <body>
-   
     <%@ include file="common/header.jsp"%>
       <br>
-    
         <div class="row">
-            <div class="col-lg-1"></div>
-           
-            
-                            <table class="table table-hover">
-	<thead>
+            <div class="col-lg-1"></div>    
+            <table class="table table-hover">
+			<thead>
 				<tr>
 					<th style="text-align:center">Pharmacy</th>
 					<th style="text-align:center">Medicine</th>
@@ -44,11 +40,7 @@
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table>
-                            
-                        
+		</table>      
             </div>
-       
- 
 </body>
 </html>

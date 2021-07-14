@@ -20,10 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 public class AuthController {
-	//private static Logger logger = LoggerFactory.getLogger(AuthController.class);
-
-	
-	
 	/**
 	 * This is a private field of type JwtUtil class which provides the
 	 * utilities for the token like get token, validate token, expiration time etc.
@@ -80,7 +76,7 @@ public class AuthController {
 
 			return new ResponseEntity<>(res, HttpStatus.FORBIDDEN);
 		} else {
-			String token1 = token;//token.substring(7);
+			String token1 = token;
 			if (jwtutil.validateToken(token1)) {
 				res.setUid(jwtutil.extractUsername(token1));
 				res.setValid(true);
@@ -88,9 +84,7 @@ public class AuthController {
 			} else {
 				res.setValid(false);
 				log.info("END - Token expired");
-
 				return new ResponseEntity<>(res, HttpStatus.FORBIDDEN);
-
 			}
 		}
 		log.info("END - Token accepted");

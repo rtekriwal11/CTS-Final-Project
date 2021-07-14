@@ -10,10 +10,6 @@
 		body{
 			background-image: url('/image/schedulebg3.jpg');
 			background-size: 1040px 640px;
-			/*background-size: cover;
-  -webkit-filter: blur(8px);
-			background-position: center;
-			*/
 		}
 	</style>
 </head>
@@ -26,7 +22,6 @@
   		  		<div class="card-body">
     				<h5 class="card-title" style="text-align: center;">Enter Date</h5>
     			<p class="card-text">
-    			<!-- <p style="font-size: 15px"></p> -->
     			<p style="text-align: center;">Appointments Displayed for next 5 days </p> 
     			</p>
     			<form action="/checkSchedules" method="GET" model="Datedto">
@@ -34,14 +29,9 @@
 					  <input type="date" id="date" name="date" style="text-align: center;">
  			   		  <input type="submit" class="btn btn-primary" style="margin-left: 115px;margin-top: 12px;">
 				</form>
-    			<!-- <a href="#" class="btn btn-primary" style="margin-left: 95px;margin-top: 12px;">
-    			View Meetings
-    			</a>
-  		  		 -->
   		  		 </div>
 			</div>
 		</div>
 	</div>
-	<%@ include file="common/footer.jsp" %>
 </body>
 </html>

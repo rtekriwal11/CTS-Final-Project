@@ -27,8 +27,6 @@ import lombok.extern.slf4j.Slf4j;
 @EnableWebSecurity
 public class ApplicationConfiguration extends WebSecurityConfigurerAdapter {
 	
-	//private static Logger logger = LoggerFactory.getLogger(SecurityConfigurer.class);
-
 	@Autowired
 	AdminDetailsService pmsuserDetailsService;
 
