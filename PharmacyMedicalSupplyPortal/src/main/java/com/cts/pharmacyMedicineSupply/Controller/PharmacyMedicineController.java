@@ -1,5 +1,6 @@
 package com.cts.pharmacyMedicineSupply.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -18,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cts.pharmacyMedicineSupply.dto.Datedto;
 import com.cts.pharmacyMedicineSupply.dto.PharmacyMedicineSupply;
 import com.cts.pharmacyMedicineSupply.dto.RepSchedule;
+import com.cts.pharmacyMedicineSupply.dto.UserData;
 import com.cts.pharmacyMedicineSupply.feign.MedicalRepMicroServiceFeign;
 import com.cts.pharmacyMedicineSupply.feign.MedicineSupplyFeignClient;
+import com.cts.pharmacyMedicineSupply.service.PharmacyMedicalSupplyService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,29 +31,95 @@ import lombok.extern.slf4j.Slf4j;
 public class PharmacyMedicineController {
 	
 	@Autowired
+	UserData admin;
+	
+	private static List<String> revokedTokens=new ArrayList<String>();
+	
+	@Autowired
+	PharmacyMedicalSupplyService pharmacyMedicalSupplyService;
+	
+	@Autowired
 	MedicalRepMicroServiceFeign medicalRepMicroServiceFeign;
 	
-	@GetMapping("/home")
-	public ModelAndView homepage() {
-		ModelAndView mv=new ModelAndView("home");
-		return mv;
+	@RequestMapping(path = "/logout", method = RequestMethod.GET)
+	public ModelAndView getLogout(HttpSession session) {
+		if (session != null && (String) session.getAttribute("token") != null
+				&& pharmacyMedicalSupplyService.isSessionValid((String) session.getAttribute("token"))) {
+			revokedTokens.add((String) session.getAttribute("token"));
+			return new ModelAndView("login");
+		}
+		return new ModelAndView("home");
 	}
 	
+	@RequestMapping(path = "/", method = RequestMethod.GET)
+	public ModelAndView getLogin(HttpSession session) {
+		log.info("Starting getLogin");
+		if (session != null && (String) session.getAttribute("token") != null
+				&& pharmacyMedicalSupplyService.isSessionValid((String) session.getAttribute("token"))&&!revokedTokens.contains((String) session.getAttribute("token"))) {
+			log.info("Ending getLogin");
+			return new ModelAndView("home");
+		}
+		log.info("Ending getLogin");
+		return new ModelAndView("login");
+	}
+
+	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	public <user> ModelAndView postLogin(HttpSession session, ModelMap model, @ModelAttribute UserData user, ModelMap warning) {
+		log.info("Starting postLogin");
+		log.info("Ending postLogin");
+		return new ModelAndView(pharmacyMedicalSupplyService.postLogin(user, session, warning));
+	}
+	
+	@GetMapping("/home")
+	public ModelAndView homepage(HttpSession session) {
+		log.info("Starting getHomePage");
+		if (pharmacyMedicalSupplyService.isSessionValid((String) session.getAttribute("token"))&&!revokedTokens.contains((String) session.getAttribute("token"))) {
+			log.info("Ending getHomePage");
+			return new ModelAndView("home");
+		}
+		log.info("Ending getHomePage");
+		return new ModelAndView("login");
+		//ModelAndView mv=new ModelAndView("home");
+		//return mv;
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////
+	
 	@GetMapping("/checkSchedule")
-	public ModelAndView checkmeeting() {
-		ModelAndView mv=new ModelAndView("datepage");
-		return mv;
+	public ModelAndView checkmeeting(HttpSession session) {
+		log.info("Starting showRepSch");
+		if (pharmacyMedicalSupplyService.isSessionValid((String) session.getAttribute("token"))&&!revokedTokens.contains((String) session.getAttribute("token"))) {
+			log.info("Ending showRepSch");
+			return new ModelAndView("datepage");
+		}
+		log.info("Ending showRepSch");
+		return new ModelAndView("login");
+		//ModelAndView mv=new ModelAndView("datepage");
+		//return mv;
 	}
 	
 	@GetMapping("/checkSchedules")
-	public ModelAndView showDate(@ModelAttribute Datedto Date,ModelMap map) {
+	public ModelAndView showDate(HttpSession session,@ModelAttribute Datedto Date,ModelMap map) {
 		ModelAndView mv=new ModelAndView("RepSchedule");
-		List<RepSchedule> schedule=medicalRepMicroServiceFeign.getSchedule(Date.getDate());
-		map.addAttribute("schedule",schedule);
-		mv.addObject(schedule);
+		if (pharmacyMedicalSupplyService.isSessionValid((String) session.getAttribute("token"))&&!revokedTokens.contains((String) session.getAttribute("token"))) {
+			log.info("Ending showRepSch");
+			List<RepSchedule> schedule=medicalRepMicroServiceFeign.getSchedule((String) session.getAttribute("token"),Date.getDate());
+			for(int i=0;i<schedule.size();i++) {
+				System.out.println(i+":"+schedule.get(i).getDoctorName());
+			}
+			map.addAttribute("schedule",schedule);
+			mv.addObject(schedule);
 		//mv.addObject("Date",date);
+			return mv;
+		}
+		log.info("Ending showRepSch");
+		mv.setViewName("login");
 		return mv;
+		//return new ModelAndView("login");
 	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Autowired
 	private MedicineSupplyFeignClient medicineSupplyFeign;
@@ -58,12 +127,17 @@ public class PharmacyMedicineController {
 	@RequestMapping(value="/viewDemand", method = RequestMethod.GET)
 	public ModelAndView showSupplyPage(HttpSession session){
 		log.info("Starting showSupplyPage");
-			return new ModelAndView(medicineSupplyFeign.showSupplyHomePage());
+		if (pharmacyMedicalSupplyService.isSessionValid((String) session.getAttribute("token"))&&!revokedTokens.contains((String) session.getAttribute("token"))) {
+			return new ModelAndView(medicineSupplyFeign.showSupplyHomePage((String) session.getAttribute("token")));
+		}
+		log.info("Ending showSupplyPage");
+		return new ModelAndView("login");
 	}
 	@GetMapping(value="/SupplyAvailed")
 	public ModelAndView showList(HttpSession session, @RequestParam String name, @RequestParam int demand,ModelMap model){
 		log.info("Starting showList");
-			List<PharmacyMedicineSupply> list=medicineSupplyFeign.showList(name, demand);
+		if (pharmacyMedicalSupplyService.isSessionValid((String) session.getAttribute("token"))&&!revokedTokens.contains((String) session.getAttribute("token"))) {
+			List<PharmacyMedicineSupply> list=medicineSupplyFeign.showList((String) session.getAttribute("token"),name, demand);
 			if(list==null) {
 				model.put("errorMessage", "PAGE EXPIRED");
 				log.info("Ending showList");
@@ -83,6 +157,7 @@ public class PharmacyMedicineController {
 			log.info("Ending showList");
 			return new ModelAndView ("SupplyAvailed");
 		}
-	
-	
+		log.info("Ending showList");
+		return new ModelAndView("login");
+	}
 }

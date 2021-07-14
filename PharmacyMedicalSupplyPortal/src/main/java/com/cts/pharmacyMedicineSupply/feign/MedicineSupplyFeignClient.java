@@ -21,8 +21,8 @@ import com.cts.pharmacyMedicineSupply.dto.PharmacyMedicineSupply;
 public interface MedicineSupplyFeignClient {
 	
 	@GetMapping("/viewDemand")
-	public String showSupplyHomePage();
+	public String showSupplyHomePage(@RequestHeader("Authorization") String token);
 	
 	@GetMapping("/SupplyAvailed")
-	public List<PharmacyMedicineSupply> showList(@RequestParam String name, @RequestParam int demand);
+	public List<PharmacyMedicineSupply> showList(@RequestHeader("Authorization") String token,@RequestParam String name, @RequestParam int demand);
 }

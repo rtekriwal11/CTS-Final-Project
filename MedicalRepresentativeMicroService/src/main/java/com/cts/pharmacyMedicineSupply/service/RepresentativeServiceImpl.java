@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.cts.pharmacyMedicineSupply.Repository.DoctorRepo;
 //import com.cts.pharmacyMedicineSupply.Repository.DoctorRepo;
 import com.cts.pharmacyMedicineSupply.dto.RepSchedule;
+import com.cts.pharmacyMedicineSupply.feign.AuthClient;
 import com.cts.pharmacyMedicineSupply.feign.StockFeignClient;
+import com.cts.pharmacyMedicineSupply.model.AuthResponse;
 import com.cts.pharmacyMedicineSupply.model.Doctor;
 import com.cts.pharmacyMedicineSupply.model.MedicalRep;
 
@@ -19,6 +21,9 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class RepresentativeServiceImpl implements RepresentativeService {
 
+	@Autowired
+	AuthClient authClient;
+	
 	@Autowired
 	DoctorRepo doctorRepo;
 	
@@ -63,6 +68,7 @@ public class RepresentativeServiceImpl implements RepresentativeService {
 			 * med=listofmed.get(0).getMedicineName()+med; } else
 			 * med=listofmed.get(0).getMedicineName();
 			 */
+			System.out.println(med);
 			schedule.add(new RepSchedule(listOfMedRep.get(rep++).getMedicalRepName(),docName,targetAilment,med,slot,date[c++],contactNumber));
 			if(rep==3)rep=0;
 		}		
@@ -125,5 +131,15 @@ public class RepresentativeServiceImpl implements RepresentativeService {
 		}
 		return retmed;
 	}*/
+	
+	public boolean isSessionValid(String token) {
+		try {
+			AuthResponse authResponse = authClient.getValidity(token);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
 
 }

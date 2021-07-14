@@ -8,5 +8,5 @@
     <img src="/image/logo2.png" width="50" height="50" class="d-inline-block align-top" alt="" >
     <span style="font-size: 28px; font-weight: bold;color:white;font-size:30px;">MEDICAPS</span>
   </a>
-  <a href="/home" style="font-size: 28px; font-weight: bold;margin-right: 20px;"><button type="button" class="btn btn-light">LOGOUT</button></a>
+  <a href="/logout" style="font-size: 28px; font-weight: bold;margin-right: 20px;"><button type="button" class="btn btn-light">LOGOUT</button></a>
 </nav>

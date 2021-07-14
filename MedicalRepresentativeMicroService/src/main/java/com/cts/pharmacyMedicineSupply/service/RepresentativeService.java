@@ -10,4 +10,6 @@ public interface RepresentativeService {
 
 	//List<RepSchedule> listschedule(LocalDate startDate);
 	List<RepSchedule> listschedule(String startDate);
+
+	boolean isSessionValid(String token);
 }

@@ -42,7 +42,7 @@ public class MedicineSupplyController {
 	 * medicine supply
 	 */
 	@Autowired
-	PharmacyMedicineSupplyService service;
+	private PharmacyMedicineSupplyService service;
 	
 	/**
 	 * It provides feign service. It connects the MedicinesSupply microservice
@@ -62,13 +62,13 @@ public class MedicineSupplyController {
 	 * Directs to the page that allows user to select medicine name and demand
 	 */
 	@RequestMapping(value="/viewDemand", method = RequestMethod.GET)
-	public String showSupplyHomePage(){
+	public String showSupplyHomePage(@RequestHeader("Authorization") String token){
 		LOGGER.info("Starting showSupplyHomePage");
-		//if (service.isSessionValid(token)) {
+		if (service.isSessionValid(token)) {
 			return "viewDemand";
-		//}
-		//LOGGER.info("Ending showSupplyHomePage");
-	//	return "login";
+		}
+		LOGGER.info("Ending showSupplyHomePage");
+		return "login";
 	}
 
 	/**
@@ -83,19 +83,19 @@ public class MedicineSupplyController {
 	 * stockFeignClient accepts the name to extract the stock from Medicine
 	 */
 	@GetMapping(value="/SupplyAvailed")
-	public ResponseEntity<?> showList(@RequestParam String name, @RequestParam int demand){
+	public ResponseEntity<?> showList(@RequestHeader("Authorization") String token,@RequestParam String name, @RequestParam int demand){
 		LOGGER.info("Starting showList");
-		//if (service.isSessionValid(token)) {
+		if (service.isSessionValid(token)) {
 			int stock = stockFeignClient.getStockCountForMedicine(name);
 			//service.stockDivide(demand,name,stock);
 			//model.put("pharmacyList", service.retrievePharmacies());
 			//return new ModelAndView ("SupplyAvailed");
 			LOGGER.info("Ending showList");
-			return new ResponseEntity<>(service.retrievePharmacies(demand,name,stock), HttpStatus.OK);
+			return new ResponseEntity<>(service.retrievePharmacies(token,demand,name,stock), HttpStatus.OK);
 		}
-		//LOGGER.info("Ending showList");
-		//return null;
-	//}
+		LOGGER.info("Ending showList");
+		return null;
+	}
 	
 	
 	

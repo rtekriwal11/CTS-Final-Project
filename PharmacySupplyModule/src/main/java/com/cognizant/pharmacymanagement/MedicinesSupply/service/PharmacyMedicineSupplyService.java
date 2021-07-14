@@ -48,12 +48,12 @@ public class PharmacyMedicineSupplyService {
 	 * @param stock
 	 * @return list of pharmacies with the stock distributed
 	 */
-    public List<PharmacyMedicineSupply> retrievePharmacies(int demand,String medicine, int stock) {
-    	//if (isSessionValid(token)) {	
+    public List<PharmacyMedicineSupply> retrievePharmacies(String token,int demand,String medicine, int stock) {
+    	if (isSessionValid(token)) {	
     		pharmacyList.clear();
 	    	if (demand>stock) {
-	    		supply=0;
-	    		return pharmacyList;
+	    		supply=stock/5;
+	    		//return pharmacyList;
 	    	}
 	    	else {
 	    		supply=demand/5;
@@ -66,9 +66,9 @@ public class PharmacyMedicineSupplyService {
 	    	pharmacyList.add(new PharmacyMedicineSupply("Pharma Plus",medName,supply));
 	    	return pharmacyList;
 
-    	//}
+    	}
     	
-    	//return null;
+    	return null;
     
     }
 
@@ -77,11 +77,16 @@ public class PharmacyMedicineSupplyService {
      * @param token
      * @return boolean true or false
      */
-	/*
-	 * public Boolean isSessionValid(String token) { try { AuthResponse authResponse
-	 * = authClient.getValidity(token); } catch (Exception e) { return false; }
-	 * return true; }
-	 */
+	
+    public Boolean isSessionValid(String token) {
+    	try {
+    		AuthResponse authResponse = authClient.getValidity(token);
+    	} catch (Exception e) {
+    		return false;
+    	}
+    	return true;
+    }
+    	
    
 }
 
