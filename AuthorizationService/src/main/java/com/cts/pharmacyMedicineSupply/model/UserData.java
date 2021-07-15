@@ -1,36 +1,10 @@
 package com.cts.pharmacyMedicineSupply.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-/*
-@Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-//@Table(name = "userdata")
-public class UserData {
-
-	@Id
-	//@Column(name = "user_id")
-	private String userid;
-
-	//@Column(name = "user_password")
-	private String upassword;
-
-	//@Column(name = "user_name")
-	private String uname;
-
-	private String authToken;
-}*/
 
 @Component
 @Entity
@@ -38,13 +12,10 @@ public class UserData {
 public class UserData {
 
 	@Id
-	//@Column(name = "userId")
 	private String userid;
 
-	//@Column(name = "userPassword")
 	private String upassword;
 
-	//@Column(name = "userName")
 	private String uname;
 
 	private String authToken;

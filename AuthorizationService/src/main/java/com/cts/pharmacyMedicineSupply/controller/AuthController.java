@@ -76,9 +76,8 @@ public class AuthController {
 
 			return new ResponseEntity<>(res, HttpStatus.FORBIDDEN);
 		} else {
-			String token1 = token;
-			if (jwtutil.validateToken(token1)) {
-				res.setUid(jwtutil.extractUsername(token1));
+			if (jwtutil.validateToken(token)) {
+				res.setUid(jwtutil.extractUsername(token));
 				res.setValid(true);
 				res.setName("admin");
 			} else {

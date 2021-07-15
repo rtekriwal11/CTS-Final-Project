@@ -56,13 +56,6 @@ class AuthorizationServiceApplicationTests {
 		actions.andExpect(status().reason("Access Denied"));
 	}
 
-	/*@Test
-	public void validateTestSuccess() throws Exception {
-		ResultActions actions = mockMvc.perform(get("/validate").header("Authorization",token));
-
-		actions.andExpect(status().isOk());
-
-	}*/
 
 	@Test
 	public void validateTestFail() throws Exception {

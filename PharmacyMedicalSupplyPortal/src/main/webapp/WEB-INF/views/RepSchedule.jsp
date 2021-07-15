@@ -61,5 +61,6 @@ font-weight:bold;}
 		</c:forEach>
 	</tbody>
 </table>
+<%@ include file="common/footer.jsp"%>
 </body>
 </html>

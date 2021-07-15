@@ -13,6 +13,7 @@
 	<artifactId>PharmacyMedicalSupplyPortal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PharmacyMedicalSupplyPortal</name>
+	<packaging>war</packaging>
 	<description>WEB PORTAL</description>
 	<properties>
 		<java.version>11</java.version>
@@ -51,6 +52,12 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
+<!-- <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency> -->
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>

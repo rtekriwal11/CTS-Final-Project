@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Date</title>
 <style type="text/css">
 		body{
@@ -26,12 +27,14 @@
     			</p>
     			<form action="/checkSchedules" method="GET" model="Datedto">
 	  				<label for="date" style="margin-right:5px">Enter Date:</label>
-					  <input type="date" id="date" name="date" style="text-align: center;">
+					  <input type="date" id="date" name="date" onfocus="this.min=new Date().toISOString().split('T')[0]" style="text-align: center;">
  			   		  <input type="submit" class="btn btn-primary" style="margin-left: 115px;margin-top: 12px;">
 				</form>
   		  		 </div>
 			</div>
 		</div>
 	</div>
+	<%@ include file="common/footer.jsp"%>
 </body>
+
 </html>

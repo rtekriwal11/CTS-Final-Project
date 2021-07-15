@@ -6,10 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,10 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-public class PharmacyMedicineController {
-	
-	//@Autowired
-	//UserData admin;
+public class PharmacyMedicineController{
 	
 	private static List<String> revokedTokens=new ArrayList<String>();
 	
@@ -100,11 +97,8 @@ public class PharmacyMedicineController {
 		if (pharmacyMedicalSupplyService.isSessionValid((String) session.getAttribute("token"))&&!revokedTokens.contains((String) session.getAttribute("token"))) {
 			log.info("Ending showRepSch");
 			List<RepSchedule> schedule=medicalRepMicroServiceFeign.getSchedule((String) session.getAttribute("token"),Date.getDate());
-			for(int i=0;i<schedule.size();i++) {
-				System.out.println(i+":"+schedule.get(i).getDoctorName());
-			}
 			map.addAttribute("schedule",schedule);
-			mv.addObject(schedule);
+			//mv.addObject(schedule);
 			return mv;
 		}
 		log.info("Ending showRepSch");
@@ -132,20 +126,20 @@ public class PharmacyMedicineController {
 		log.info("Starting showList");
 		if (pharmacyMedicalSupplyService.isSessionValid((String) session.getAttribute("token"))&&!revokedTokens.contains((String) session.getAttribute("token"))) {
 			List<PharmacyMedicineSupply> list=medicineSupplyFeign.showList((String) session.getAttribute("token"),name, demand);
+			String error="";
+			if(list==null || demand<5 || list.isEmpty()){
 			if(list==null) {
-				model.put("errorMessage", "PAGE EXPIRED");
-				log.info("Ending showList");
-				return new ModelAndView ("viewDemand");				
+				error="PAGE EXPIRED";				
 			}
-			if(demand<5) {
-				model.put("errorMessage", "Invalid Input!");
-				log.info("Ending showList");
-				return new ModelAndView ("viewDemand");
+			else if(demand<5) {
+				error="Invalid Input";
 			}
-			if(list.isEmpty()) {
-				model.put("errorMessage", "Stock not available!");
-				log.info("Ending showList");
-				return new ModelAndView ("viewDemand");
+			else if(list.isEmpty()) {
+				error="Stock not available!";
+			}
+			model.put("errorMessage", error);
+			log.info("Ending showlist");
+			return new ModelAndView("viewDemand");
 			}
 			model.put("pharmacyList", list);
 			log.info("Ending showList");

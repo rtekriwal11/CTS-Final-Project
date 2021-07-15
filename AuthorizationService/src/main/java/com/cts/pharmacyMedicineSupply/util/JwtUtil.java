@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class JwtUtil {
 	
-	public static final long JWT_TOKEN_VALIDITY = 15*60;
+	public static final long JWT_TOKEN_VALIDITY = 30*60;
 	/*
 	 * *JWT SECRET VALUE IS WRITTEN IN APPLICATION.PROPERTIES
 	 * IT IS USED FOR GENERATING THE TOKEN
@@ -99,11 +99,7 @@ public class JwtUtil {
 	private String createToken(Map<String, Object> claims, String subject) {
 		log.info("START");
 
-		/*String compact = Jwts.builder().setClaims(claims).setSubject(subject)
-				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 180000000))
-				.signWith(SignatureAlgorithm.HS256, secretkey).compact();
-		*/log.info("END");
+		log.info("END");
 		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
 				.signWith(SignatureAlgorithm.HS512, secretkey).compact();
