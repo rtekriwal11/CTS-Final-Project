@@ -1,16 +1,18 @@
-package com.cognizant.pharmacymanagement.MedicinesSupply.model;
+package com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.model;
 
+import lombok.Data;
 
 /**
  * Model class used to represent the details about the pharmacy medicine supply.
  * Includes getters and setters
  */
+@Data
 public class PharmacyMedicineSupply {
 	private String pharmacyName;
 	private String medicineName;
 	private int supplyCount;
 	
-	public String getPharmacyName() {
+	/*public String getPharmacyName() {
 		return pharmacyName;
 	}
 	
@@ -33,19 +35,19 @@ public class PharmacyMedicineSupply {
 	public void setSupplyCount(int supplyCount) {
 		this.supplyCount = supplyCount;
 	}
-	
+	*/
 	public PharmacyMedicineSupply(String pharmacyName, String medicineName, int supplyCount) {
 		super();
 		this.pharmacyName = pharmacyName;
 		this.medicineName = medicineName;
 		this.supplyCount = supplyCount;
 	}
-	 @Override
+	/* @Override
 	    public String toString() {
 	        return String.format(
 	                "PharmacyMedicineSupply [pharmacyName=%s, medicineName=%s, supplyCount=%d]", pharmacyName,
 	                medicineName, supplyCount);
 		
-	}
+	}*/
 }
 

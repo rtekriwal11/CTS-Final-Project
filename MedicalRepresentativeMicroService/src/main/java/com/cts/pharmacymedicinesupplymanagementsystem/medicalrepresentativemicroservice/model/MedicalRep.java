@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply.model;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model;
 
 
 

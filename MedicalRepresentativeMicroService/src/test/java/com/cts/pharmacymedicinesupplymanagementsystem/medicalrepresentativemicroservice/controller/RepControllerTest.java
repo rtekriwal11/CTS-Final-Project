@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply.controller;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -13,7 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.cts.pharmacyMedicineSupply.service.RepresentativeServiceImpl;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.controller.RepController;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service.RepresentativeServiceImpl;
 
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)

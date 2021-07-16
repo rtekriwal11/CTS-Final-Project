@@ -1,4 +1,5 @@
-package com.cts.pharmacyMedicineSupply.model;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model;
+/*package com.cts.pharmacyMedicineSupply.model;
 
 
 import lombok.AllArgsConstructor;
@@ -16,4 +17,4 @@ public class Medicine {
 	private String dateOfExpiry;
 	private int numberOfTabletsInStocks;
 	
-}
+}*/

@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply.service;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -14,10 +14,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.cts.pharmacyMedicineSupply.Repository.DoctorRepo;
-import com.cts.pharmacyMedicineSupply.feign.StockFeignClient;
-import com.cts.pharmacyMedicineSupply.model.Doctor;
-import com.cts.pharmacyMedicineSupply.model.MedicalRep;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.feign.AuthClient;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.feign.StockFeignClient;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model.AuthResponse;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model.Doctor;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model.MedicalRep;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.repository.DoctorRepo;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service.MedicalRepService;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service.RepresentativeServiceImpl;
 @ExtendWith(MockitoExtension.class)
 class RepresentativeServiceImplTest {
 
@@ -25,10 +29,13 @@ class RepresentativeServiceImplTest {
 	 @InjectMocks 
 	 RepresentativeServiceImpl representativeServiceImpl;
 	 
-	 @BeforeClass 
-	 public void initialise(RepresentativeServiceImpl representativeServiceImpl) {
+	 //@BeforeClass 
+	 /*public void initialise(RepresentativeServiceImpl representativeServiceImpl) {
 		 this.representativeServiceImpl=representativeServiceImpl; 
 		 }
+		 */
+	 @Mock
+	AuthClient authClient;
 	 
 	@Mock
 	DoctorRepo doctorRepo;
@@ -65,5 +72,13 @@ class RepresentativeServiceImplTest {
 		LocalDate dt=LocalDate.parse("2021-07-19");
 		String date[]= {"2021-07-19","2021-07-20","2021-07-21","2021-07-22","2021-07-23"};
 		assertArrayEquals(date,representativeServiceImpl.getListOfDates(dt));
+	}
+	
+	@Test
+	public void TestIsSessionValid() {
+		AuthResponse auth=new AuthResponse("admin","admin",true);
+		when(authClient.getValidity("token")).thenReturn(auth);
+		
+		assertEquals(true,representativeServiceImpl.isSessionValid("token"));
 	}
 }

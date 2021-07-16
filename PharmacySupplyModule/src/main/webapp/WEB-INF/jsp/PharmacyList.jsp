@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta charset="ISO-8859-1">
@@ -11,11 +11,12 @@
 
 <body>
 <table>
+<caption>Stock Supply</caption>
 	<thead>
 				<tr>
-					<th>Pharmacy</th>
-					<th>Medicine</th>
-					<th>Stock Available</th>
+					<th id="element">Pharmacy</th>
+					<th id="element">Medicine</th>
+					<th id="element">Stock Available</th>
 				</tr>
 			</thead>
 			<tbody>

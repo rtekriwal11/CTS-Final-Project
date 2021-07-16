@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply.dto;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.dto;
 
 import org.springframework.stereotype.Component;
 

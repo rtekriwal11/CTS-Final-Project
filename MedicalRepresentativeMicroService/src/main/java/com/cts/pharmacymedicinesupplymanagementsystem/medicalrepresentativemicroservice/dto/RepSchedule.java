@@ -1,4 +1,5 @@
-package com.cts.pharmacyMedicineSupply.dto;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.dto;
+
 
 
 //import javax.persistence.Entity;
@@ -6,12 +7,12 @@ package com.cts.pharmacyMedicineSupply.dto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 //@Entity
+//@Setter
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class RepSchedule {
 	@ApiModelProperty(value = "Name of the Medical Representative")
 	private String medicalRepName;

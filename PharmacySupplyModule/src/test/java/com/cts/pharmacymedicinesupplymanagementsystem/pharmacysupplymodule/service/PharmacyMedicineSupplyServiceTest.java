@@ -1,4 +1,4 @@
-package com.cognizant.pharmacymanagement.MedicinesSupply.service;
+package com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.service;
 
 /**
  * This class contains test cases for the MedicineSupplyController class which
@@ -22,8 +22,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.cognizant.pharmacymanagement.MedicinesSupply.model.*;
-import com.cognizant.pharmacymanagement.MedicinesSupply.service.PharmacyMedicineSupplyService;
+import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.model.*;
+import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.service.PharmacyMedicineSupplyService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

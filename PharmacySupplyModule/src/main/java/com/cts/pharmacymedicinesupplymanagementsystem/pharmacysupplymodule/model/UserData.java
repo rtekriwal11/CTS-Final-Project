@@ -1,4 +1,4 @@
-package com.cognizant.pharmacymanagement.MedicinesSupply.model;
+package com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.model;
 
 import org.springframework.stereotype.Component;
 
@@ -23,7 +23,7 @@ public class UserData {
 	 * Generated authentication token for the user
 	 */
 	private String authToken;
-
+/*
 	public String getUserid() {
 		return userid;
 	}
@@ -66,5 +66,5 @@ public class UserData {
 
 	public UserData() {
 
-	}
+	}*/
 }

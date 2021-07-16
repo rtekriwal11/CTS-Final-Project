@@ -1,61 +1,34 @@
-package com.cognizant.pharmacymanagement.MedicinesSupply.service;
+package com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.service;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cognizant.pharmacymanagement.MedicinesSupply.feingClient.AuthClient;
-import com.cognizant.pharmacymanagement.MedicinesSupply.feingClient.StockFeignClient;
-import com.cognizant.pharmacymanagement.MedicinesSupply.model.*;
+import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.feingclient.AuthClient;
+import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.model.PharmacyMedicineSupply;
 
 
-/**
- * This class contains the business logic to extract the details related
- * to medicine name and demand provided.
- */
 @Service
 public class PharmacyMedicineSupplyService {
-	
-	private static int supply=0;
-	
-	private static String medName;
-	
-	/**
-	 * Used to call the method present in {@link StockFeignClient} interface
-	 */
-	@Autowired
-	private StockFeignClient stockFeignClient;
-	
-	/**
-	 * AuthFeignClient is used to verify the token.
-	 */
 	@Autowired
 	private AuthClient authClient;
 	
-	private static int stock;
-	
-	/**
-	 * Creates a list of type PharmacyMedicineSupply.
-	 */
-	private static List<PharmacyMedicineSupply> pharmacyList = new ArrayList<PharmacyMedicineSupply>();
+	private static List<PharmacyMedicineSupply> pharmacyList = new ArrayList<>();
 	
     
-	/**
-	 *  Method that accepts the medicine name and demand count from Controller class
-	 * @param token
-	 * @param demand
-	 * @param medicine
-	 * @param stock
-	 * @return list of pharmacies with the stock distributed
-	 */
     public List<PharmacyMedicineSupply> retrievePharmacies(String token,int demand,String medicine, int stock) {
-    	if (isSessionValid(token)) {	
+    	String medName;
+    	int supply=0;
+    	boolean isvalid=isSessionValid(token);
+    	if (isvalid) 
+    	{	
     		pharmacyList.clear();
-	    	if (demand>stock) {
+	    	if (demand>stock) 
+	    	{
 	    		supply=stock/5;
-	    		//return pharmacyList;
 	    	}
-	    	else {
+	    	else 
+	    	{
 	    		supply=demand/5;
 	    	}
 	    	medName = medicine;
@@ -68,19 +41,13 @@ public class PharmacyMedicineSupplyService {
 
     	}
     	
-    	return null;
+    	return new ArrayList<>();
     
     }
 
-    /**
-     * Checks whether token is valid
-     * @param token
-     * @return boolean true or false
-     */
-	
     public Boolean isSessionValid(String token) {
     	try {
-    		AuthResponse authResponse = authClient.getValidity(token);
+    		authClient.getValidity(token);
     	} catch (Exception e) {
     		return false;
     	}

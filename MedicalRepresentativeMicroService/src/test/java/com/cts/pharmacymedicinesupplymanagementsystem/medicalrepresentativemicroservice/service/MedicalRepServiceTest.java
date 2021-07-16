@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply.service;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +11,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.cts.pharmacyMedicineSupply.model.MedicalRep;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model.MedicalRep;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service.MedicalRepService;
 
 @ExtendWith(MockitoExtension.class)
 public class MedicalRepServiceTest {

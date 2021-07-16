@@ -22,11 +22,12 @@
            
             
                             <table style="padding:50px;">
+                            <caption>Supply Table</caption>
 	<thead>
 				<tr>
-					<th style="text-align:center">Pharmacy</th>
-					<th style="text-align:center">Medicine</th>
-					<th style="text-align:center">Stock Available</th>
+					<th style="text-align:center" id="element">Pharmacy</th>
+					<th style="text-align:center" id="element">Medicine</th>
+					<th style="text-align:center" id="element">Stock Available</th>
 				</tr>
 			</thead>
 			<tbody>

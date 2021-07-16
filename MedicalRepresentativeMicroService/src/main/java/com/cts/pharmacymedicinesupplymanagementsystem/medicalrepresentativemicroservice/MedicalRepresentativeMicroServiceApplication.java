@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

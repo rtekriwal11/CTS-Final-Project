@@ -1,4 +1,4 @@
-package com.cognizant.pharmacymanagement.MedicinesSupply.controller;
+package com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.controller;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -16,13 +16,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
-import com.cognizant.pharmacymanagement.MedicinesSupply.feingClient.AuthClient;
-import com.cognizant.pharmacymanagement.MedicinesSupply.feingClient.StockFeignClient;
-import com.cognizant.pharmacymanagement.MedicinesSupply.model.AuthResponse;
-import com.cognizant.pharmacymanagement.MedicinesSupply.model.Medicine;
-import com.cognizant.pharmacymanagement.MedicinesSupply.service.PharmacyMedicineSupplyService;
-
+import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.controller.PharmacySupplyModuleController;
+import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.feingclient.AuthClient;
+import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.feingclient.StockFeignClient;
+import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.model.AuthResponse;
+import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.service.PharmacyMedicineSupplyService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,10 +33,10 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 
-public class MedicineSupplyControllerTest {
+public class PharmacySupplyModuleControllerTest {
 	
 	@InjectMocks
-	private MedicineSupplyController medicineSupplyController;
+	private PharmacySupplyModuleController medicineSupplyController;
 	
 	@Mock
 	private StockFeignClient stockClient;

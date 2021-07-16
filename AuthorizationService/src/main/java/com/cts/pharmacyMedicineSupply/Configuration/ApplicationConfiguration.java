@@ -54,6 +54,7 @@ public class ApplicationConfiguration extends WebSecurityConfigurerAdapter {
 
 	}
 
+	/*
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		log.info("START");
@@ -63,7 +64,7 @@ public class ApplicationConfiguration extends WebSecurityConfigurerAdapter {
 		log.info("END");
 
 	}
-	
+	*/
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {

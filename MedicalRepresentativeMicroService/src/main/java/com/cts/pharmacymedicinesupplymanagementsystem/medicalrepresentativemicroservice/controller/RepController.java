@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply.controller;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cts.pharmacyMedicineSupply.service.RepresentativeService;
-
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service.RepresentativeService;
 
 import lombok.extern.slf4j.Slf4j;
 

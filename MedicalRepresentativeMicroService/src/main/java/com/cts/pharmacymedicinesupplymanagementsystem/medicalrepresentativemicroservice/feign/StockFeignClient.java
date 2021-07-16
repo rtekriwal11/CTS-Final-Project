@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply.feign;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.feign;
 
 import java.util.List;
 

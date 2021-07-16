@@ -1,11 +1,11 @@
-package com.cts.pharmacyMedicineSupply.service;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.cts.pharmacyMedicineSupply.model.MedicalRep;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model.MedicalRep;
 @Service
 
 public class MedicalRepService {

@@ -1,13 +1,15 @@
-package com.cognizant.pharmacymanagement.MedicinesSupply.model;
+package com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.model;
 
 /**
  * Model class used to represent the details about the medicine demand.
  * Includes getters and setters
  */
+/*
 public class MedicineDemand {
 	private String medicine;
 	private int demandCount;
-	
+}
+*//*
 	public String getMedicine() {
 		return medicine;
 	}
@@ -31,7 +33,6 @@ public class MedicineDemand {
 	}
 	
 	public MedicineDemand() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -41,5 +42,4 @@ public class MedicineDemand {
                 medicine, demandCount);
 	
 }
-	
-}
+	*/

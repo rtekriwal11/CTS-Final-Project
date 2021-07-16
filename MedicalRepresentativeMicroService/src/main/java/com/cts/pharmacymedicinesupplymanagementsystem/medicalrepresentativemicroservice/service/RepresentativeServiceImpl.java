@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply.service;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,13 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cts.pharmacyMedicineSupply.Repository.DoctorRepo;
-import com.cts.pharmacyMedicineSupply.dto.RepSchedule;
-import com.cts.pharmacyMedicineSupply.feign.AuthClient;
-import com.cts.pharmacyMedicineSupply.feign.StockFeignClient;
-import com.cts.pharmacyMedicineSupply.model.AuthResponse;
-import com.cts.pharmacyMedicineSupply.model.Doctor;
-import com.cts.pharmacyMedicineSupply.model.MedicalRep;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.dto.RepSchedule;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.feign.AuthClient;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.feign.StockFeignClient;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model.Doctor;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model.MedicalRep;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.repository.DoctorRepo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,23 +50,24 @@ public class RepresentativeServiceImpl implements RepresentativeService {
 		int increase_date_count=0;
 		int count_of_rep=0;
 		List<String> listofmed=new ArrayList<>();
+		log.info("startmethod loop");
 		for(int j=1;j<=doctorRepo.count();j++) {
 			listofmed.clear();
 			Doctor d=doctorRepo.getOne(j);
 			String docName=d.getDoctorname();
-			log.info("DOCTOR'S NAME:"+docName);
+			log.debug("DOCTOR'S NAME:"+docName);
 			String slot="1 PM to 2 PM";
-			log.info("DOCTOR'S TIME SLOT:"+slot);
+			log.debug("DOCTOR'S TIME SLOT:"+slot);
 			String contactNumber=d.getContactnumber();
-			log.info("DOCTOR'S CONTACT NUMBER:"+contactNumber);
+			log.debug("DOCTOR'S CONTACT NUMBER:"+contactNumber);
 			String targetAilment=d.getTreatingailment();
-			log.info("DOCTOR'S TARGETING AILMENT:"+targetAilment);
+			log.debug("DOCTOR'S TARGETING AILMENT:"+targetAilment);
 			listofmed=stockFeignClient.getMedicineByTreatingAilment(targetAilment);
 			String med = String.join(",", listofmed);
-			System.out.println(med);
 			schedule.add(new RepSchedule(listOfMedRep.get(count_of_rep++).getMedicalRepName(),docName,targetAilment,med,slot,date[increase_date_count++],contactNumber));
 			if(count_of_rep==3)count_of_rep=0;
 		}		
+		log.info("return method loop");
 		return schedule;
 	}
 	
@@ -105,7 +105,7 @@ public class RepresentativeServiceImpl implements RepresentativeService {
 	 */
 	public boolean isSessionValid(String token) {
 		try {
-			AuthResponse authResponse = authClient.getValidity(token);
+			 authClient.getValidity(token);
 		} catch (Exception e) {
 			return false;
 		}

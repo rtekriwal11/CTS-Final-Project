@@ -1,10 +1,9 @@
-package com.cts.pharmacyMedicineSupply.service;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.service;
 
 import java.time.LocalDate;
 import java.util.List;
 
-
-import com.cts.pharmacyMedicineSupply.dto.RepSchedule;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.dto.RepSchedule;
 
 
 public interface RepresentativeService {

@@ -1,4 +1,4 @@
-package com.cts.pharmacyMedicineSupply.model;
+package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model;
 //H2 DB ALWAYS GENERATE DATA IN ALPHABETICAL ORDER
 
 import javax.persistence.Entity;

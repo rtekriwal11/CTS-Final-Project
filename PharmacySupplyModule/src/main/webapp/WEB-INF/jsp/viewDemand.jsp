@@ -23,6 +23,10 @@
             <div class="card" style="width: 50rem; margin-top:50px">
             <div class="card-title"></div>
                 <table>
+                <tr>
+                <th id="element">de</th>
+                </tr>
+                <caption>Enter the demand</caption>
                     <tr class="odd">
                         
                         <td class="quantity">
