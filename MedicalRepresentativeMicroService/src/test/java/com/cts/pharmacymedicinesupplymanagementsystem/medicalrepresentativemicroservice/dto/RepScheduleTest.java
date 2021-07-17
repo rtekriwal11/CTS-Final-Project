@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model.Doctor;
+import com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model.MedicalRep;
 
 @ExtendWith(MockitoExtension.class)
 class RepScheduleTest {
@@ -47,6 +48,19 @@ class RepScheduleTest {
 		assertEquals("1pm",repSchedule.getMeetingSlot());
 		assertEquals("2021",repSchedule.getDate_Of_Meeting());
 		assertEquals("9876543210",repSchedule.getDoctorNumber());
+	}
+	
+	@Test
+	public void testToString() {
+		String val=repSchedule.toString();
+		assertEquals(val,repSchedule.toString());
+	}
+	
+	@Test
+	public void testEquals_Symmetric() {
+		RepSchedule r=new RepSchedule("R1", "D1", "Orthopaedics", "medicine", "1pm", "2021-07-01", "9876543210");
+	    assertTrue(repSchedule.equals(r) && r.equals(repSchedule));
+	    assertTrue(repSchedule.hashCode() == r.hashCode());
 	}
 	
 

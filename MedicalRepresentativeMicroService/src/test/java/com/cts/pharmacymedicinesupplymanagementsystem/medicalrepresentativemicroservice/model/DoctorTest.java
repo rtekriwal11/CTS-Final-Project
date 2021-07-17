@@ -33,10 +33,28 @@ class DoctorTest {
 		assertEquals("Orthopaedics",doctor.getTreatingailment());
 		
 	}
+	@Test
+	public void testsetmethod() {
+		doctor.setId(0);
+		doctor.setDoctorname("D1");doctor.setTreatingailment("Orthopaedics");
+		doctor.setContactnumber("9884122113");
+		assertEquals(0,doctor.getId());
+		assertEquals("D1",doctor.getDoctorname());
+		assertEquals("9884122113",doctor.getContactnumber());
+		assertEquals("Orthopaedics",doctor.getTreatingailment());
+	}
 	
 	@Test
-	public void testtoString() {
-		
+	public void testToString() {
+		String val=doctor.toString();
+		assertEquals(val,doctor.toString());
+	}
+	
+	@Test
+	public void testEquals_Symmetric() {
+		Doctor y=new Doctor(0,"D1","9884122113","Orthopaedics");
+	    assertTrue(doctor.equals(y) && y.equals(doctor));
+	    assertTrue(doctor.hashCode() == y.hashCode());
 	}
 
 }

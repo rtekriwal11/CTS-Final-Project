@@ -1,22 +1,24 @@
-package com.cts.pharmacymedicinesupplymanagementsystem.medicalrepresentativemicroservice.model;
+package com.cts.pharmacyMedicineSupply.dto;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 class AuthResponseTest {
 
-	AuthResponse authResponse;
+AuthResponse authResponse;
 	
 	@BeforeEach
 	public void setup() {
 		//doctor=new Doctor(0,"D1","9884122113","Orthopaedics");
-		authResponse=new AuthResponse();
-		authResponse.setUid("admin");
-		authResponse.setName("admin");
-		authResponse.setValid(true);
+		authResponse=new AuthResponse("admin","admin",true);
+		//authResponse.setUid("admin");
+		//authResponse.setName("admin");
+		//authResponse.setValid(true);
 	}
 	
 	@Test
@@ -25,6 +27,7 @@ class AuthResponseTest {
 		assertEquals("admin",authResponse.getName());
 		assertTrue(authResponse.isValid());
 	}
+	
 	@Test
 	public void testsetmethod() {
 		authResponse.setUid("admin");
