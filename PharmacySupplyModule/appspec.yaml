@@ -1,0 +1,12 @@
+
+version: 1.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-2:234825976347:task-definition/simple-cicd-api-task-definition:4"
+        LoadBalancerInfo:
+          ContainerName: "simple-cicd-api"
+          ContainerPort: "8083"
+        PlatformVersion: "LATEST"
+

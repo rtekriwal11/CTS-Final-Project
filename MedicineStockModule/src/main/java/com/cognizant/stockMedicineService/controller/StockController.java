@@ -25,6 +25,7 @@ import com.cognizant.stockMedicineService.model.Medicine;
 import com.cognizant.stockMedicineService.service.MedicineStockService;
 
 import feign.FeignException;
+import lombok.extern.slf4j.Slf4j;
 
 /**
 This class is handling the end points for medicine stock
@@ -34,9 +35,10 @@ interface MedicineStockService for extracting information
 about medicine stock. 
 */
 
+@Slf4j
 @RestController
 public class StockController {
-	private static Logger LOGGER = LoggerFactory.getLogger(StockMedicineServiceApplication.class);
+	//private static Logger LOGGER = LoggerFactory.getLogger(StockMedicineServiceApplication.class);
 	
 	/**
 	 * An interface which has an implementation class
@@ -53,10 +55,10 @@ public class StockController {
 		
 	@RequestMapping(value= "/MedicineStockInformation" , method=RequestMethod.GET)
 	public ResponseEntity<?> getMedicineStockInformation() {
-		LOGGER.info("START");
+		log.info("START");
 		List<Medicine> medicineStockInformation = null;	
 		medicineStockInformation = medicineStockService.getMedicineStockInformation();
-		LOGGER.info("END1");
+		log.info("END1");
 		return new ResponseEntity<>(medicineStockInformation, HttpStatus.OK);
 	}
 
@@ -69,14 +71,14 @@ public class StockController {
 	
 	@RequestMapping(value= "/byTreatingAilment/{treatingAilment}" , method=RequestMethod.GET)
 	public ResponseEntity<?> getMedicineByTreatingAilment(@PathVariable("treatingAilment") String treatingAilment) {
-		LOGGER.info("START");
+		log.info("START");
 		List<String> medicines = new ArrayList<>();
 		List<Medicine> medicineByTargetAilment = medicineStockService.getMedicineByTargetAilment(treatingAilment);		
 		for (Iterator iterator = medicineByTargetAilment.iterator(); iterator.hasNext();) {
 			Medicine medicineStock = (Medicine) iterator.next();
 			medicines.add(medicineStock.getName());
 		}
-		LOGGER.info("END2");
+		log.info("END2");
 		return new ResponseEntity<>(medicines.toArray(new String[0]), HttpStatus.OK);
 	}
 
@@ -87,8 +89,8 @@ public class StockController {
 	
 	@RequestMapping(value = "/get-stock-count/{medicine}" , method = RequestMethod.GET)
 	public ResponseEntity<?> getStockCountForMedicine(@PathVariable("medicine") String medicine) {
-		LOGGER.info("START");
-		LOGGER.info("END3");
+		log.info("START");
+		log.info("END3");
 		return new ResponseEntity<>(medicineStockService.getNumberOfTabletsInStockByName(medicine), HttpStatus.OK);
 	}
 	
