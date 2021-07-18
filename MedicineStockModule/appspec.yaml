@@ -4,9 +4,9 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:us-east-2:234825976347:task-definition/simple-cicd-api-task-definition:4"
+        TaskDefinition: "arn:aws:ecs:us-east-2:876983010549:task-definition/pod3-stock-taskdfn:1"
         LoadBalancerInfo:
-          ContainerName: "simple-cicd-api"
+          ContainerName: "stock-pod3"
           ContainerPort: "8080"
         PlatformVersion: "LATEST"
 
