@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-@FeignClient(url="http://localhost:8080/", name="stockMedicine")
+@FeignClient(url="http://localhost:8080/stock", name="stockMedicine")
 public interface StockFeignClient {
 
 	@GetMapping(value="/get-stock-count/{medicine}")

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.model.AuthResponse;
 
-@FeignClient(name = "authorization-service", url = "http://localhost:9095")
+@FeignClient(name = "authorization-service", url = "http://localhost:9095/authorization")
 public interface AuthClient {
 
 	

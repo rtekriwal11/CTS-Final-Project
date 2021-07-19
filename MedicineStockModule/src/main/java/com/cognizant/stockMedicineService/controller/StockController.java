@@ -37,6 +37,7 @@ about medicine stock.
 
 @Slf4j
 @RestController
+@RequestMapping("/stock")
 public class StockController {
 	//private static Logger LOGGER = LoggerFactory.getLogger(StockMedicineServiceApplication.class);
 	

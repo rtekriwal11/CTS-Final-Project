@@ -17,7 +17,7 @@ import com.cts.pharmacyMedicineSupply.dto.PharmacyMedicineSupply;
 
 
 
-@FeignClient(url="http://localhost:8083", name="medicineSupply")
+@FeignClient(url="http://localhost:8083/pharmacysupply", name="medicineSupply")
 public interface MedicineSupplyFeignClient {
 	
 	@GetMapping("/viewDemand")

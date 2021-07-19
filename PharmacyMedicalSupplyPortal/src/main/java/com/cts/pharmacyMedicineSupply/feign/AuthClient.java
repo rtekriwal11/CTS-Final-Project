@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import com.cts.pharmacyMedicineSupply.dto.AuthResponse;
 import com.cts.pharmacyMedicineSupply.dto.UserData;
 
-@FeignClient(name = "authorization-service", url = "http://localhost:9095")
+@FeignClient(name = "authorization-service", url = "http://localhost:9095/authorization")
 public interface AuthClient {
 
 	@PostMapping(value = "/login")
