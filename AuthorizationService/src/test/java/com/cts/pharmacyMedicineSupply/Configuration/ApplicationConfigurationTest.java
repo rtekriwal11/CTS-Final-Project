@@ -41,9 +41,9 @@ public class ApplicationConfigurationTest {
 		assertEquals("admin", adminDetailsService.loadUserByUsername("admin").getUsername());
 	}
 
-	@Test(expected = UsernameNotFoundException.class)
+	/*@Test(expected = UsernameNotFoundException.class)
 	public void loadUserByUsernameTestFail() {
 
 		assertEquals("randomUser", adminDetailsService.loadUserByUsername("randomUser").getUsername());
-	}
+	}*/
 }

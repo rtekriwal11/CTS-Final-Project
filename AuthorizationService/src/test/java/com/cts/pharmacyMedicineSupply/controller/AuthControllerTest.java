@@ -1,6 +1,7 @@
-/*package com.cts.pharmacyMedicineSupply;
+package com.cts.pharmacyMedicineSupply.controller;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -10,19 +11,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.http.MediaType;
 
-import com.cts.pharmacyMedicineSupply.controller.AuthController;
 import com.cts.pharmacyMedicineSupply.model.UserData;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AuthorizationServiceApplicationTest {
+class AuthControllerTest {
+
 
 	private String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYxNTcyMTkxMywiaWF0IjoxNjE1NTQxOTEzfQ.sBh1dxvrhBUQWtmOIzJ0HYBIQCxZ__5Hhr1IvsOyYNI";
 	@Autowired
@@ -32,18 +32,18 @@ public class AuthorizationServiceApplicationTest {
 	private AuthController authController;
 	
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 
 		assertNotNull(authController);
 
 	}
 
 	@Test
-	public void loginTestSuccess() throws Exception {
+	void loginTestSuccess() throws Exception {
 		UserData admin = new UserData("admin", "pwd", "admin", token);
 
 		ResultActions actions = mockMvc
-				.perform(post("/login").contentType(MediaType.APPLICATION_JSON).content(asJsonString(admin)));
+				.perform(post("/authorization/login").contentType(MediaType.APPLICATION_JSON).content(asJsonString(admin)));
 		actions.andExpect(status().isOk());
 	}
 
@@ -52,7 +52,7 @@ public class AuthorizationServiceApplicationTest {
 		UserData admin = new UserData("randomUser", "randomUser", "randomUser", "randomUser");
 
 		ResultActions actions = mockMvc
-				.perform(post("/login").contentType(MediaType.APPLICATION_JSON).content(asJsonString(admin)));
+				.perform(post("/authorization/login").contentType(MediaType.APPLICATION_JSON).content(asJsonString(admin)));
 		actions.andExpect(status().isForbidden());
 		actions.andExpect(status().reason("Access Denied"));
 	}
@@ -60,7 +60,7 @@ public class AuthorizationServiceApplicationTest {
 
 	@Test
 	public void validateTestFail() throws Exception {
-		ResultActions actions = mockMvc.perform(get("/validate").header("Authorization", "randomToken"));
+		ResultActions actions = mockMvc.perform(get("/authorization/validate").header("Authorization", "randomToken"));
 
 		actions.andExpect(status().isForbidden());
 
@@ -75,4 +75,3 @@ public class AuthorizationServiceApplicationTest {
 	}
 
 }
-*/

@@ -12,8 +12,8 @@ import lombok.Data;
  * Includes getters and setters
  */
 //@Entity
-//@Data
-/*public class Medicine {
+@Data
+public class Medicine {
 	
 	@Id
 	private String name;
@@ -23,4 +23,3 @@ import lombok.Data;
 	private int numberOfStock;
 	
 }
-*/

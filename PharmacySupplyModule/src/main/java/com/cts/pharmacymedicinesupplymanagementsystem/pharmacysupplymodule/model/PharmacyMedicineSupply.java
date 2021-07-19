@@ -12,7 +12,7 @@ public class PharmacyMedicineSupply {
 	private String medicineName;
 	private int supplyCount;
 	
-	/*public String getPharmacyName() {
+	public String getPharmacyName() {
 		return pharmacyName;
 	}
 	
@@ -35,19 +35,19 @@ public class PharmacyMedicineSupply {
 	public void setSupplyCount(int supplyCount) {
 		this.supplyCount = supplyCount;
 	}
-	*/
+	
 	public PharmacyMedicineSupply(String pharmacyName, String medicineName, int supplyCount) {
 		super();
 		this.pharmacyName = pharmacyName;
 		this.medicineName = medicineName;
 		this.supplyCount = supplyCount;
 	}
-	/* @Override
+	 @Override
 	    public String toString() {
 	        return String.format(
 	                "PharmacyMedicineSupply [pharmacyName=%s, medicineName=%s, supplyCount=%d]", pharmacyName,
 	                medicineName, supplyCount);
 		
-	}*/
+	}
 }
 

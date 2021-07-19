@@ -1,18 +1,16 @@
 package com.cts.pharmacyMedicineSupply.dto;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-
-class AuthResponseTest {
+public class AuthResponseTest {
 
 AuthResponse authResponse;
 	
-	@BeforeEach
+	@Before
 	public void setup() {
 		//doctor=new Doctor(0,"D1","9884122113","Orthopaedics");
 		authResponse=new AuthResponse("admin","admin",true);

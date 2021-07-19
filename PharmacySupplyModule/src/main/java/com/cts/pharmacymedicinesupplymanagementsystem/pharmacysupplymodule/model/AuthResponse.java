@@ -7,11 +7,11 @@ import lombok.Data;
  */
 //@Data
 public class AuthResponse {
-	/*public AuthResponse(String string, String string2, boolean b) {
+	public AuthResponse(String string, String string2, boolean b) {
 		uid=string;
 		name=string2;
 		isValid=b;
-	}*/
+	}
 	private String uid;
 	private String name;
 	private boolean isValid;

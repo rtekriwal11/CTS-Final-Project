@@ -4,12 +4,11 @@ package com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.mode
  * Model class used to represent the details about the medicine demand.
  * Includes getters and setters
  */
-/*
+
 public class MedicineDemand {
 	private String medicine;
 	private int demandCount;
-}
-*//*
+
 	public String getMedicine() {
 		return medicine;
 	}
@@ -42,4 +41,4 @@ public class MedicineDemand {
                 medicine, demandCount);
 	
 }
-	*/
+}
