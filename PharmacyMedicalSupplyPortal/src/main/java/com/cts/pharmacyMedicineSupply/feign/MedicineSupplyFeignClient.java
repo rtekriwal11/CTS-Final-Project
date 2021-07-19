@@ -17,7 +17,8 @@ import com.cts.pharmacyMedicineSupply.dto.PharmacyMedicineSupply;
 
 
 
-@FeignClient(url="http://localhost:8083/pharmacysupply", name="medicineSupply")
+//@FeignClient(url="http://localhost:8083/pharmacysupply", name="medicineSupply")
+@FeignClient(url="ij021-pod3-lb-388512216.us-east-2.elb.amazonaws.com/pharmacysupply", name="medicineSupply")
 public interface MedicineSupplyFeignClient {
 	
 	@GetMapping("/viewDemand")

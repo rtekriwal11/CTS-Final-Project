@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cts.pharmacyMedicineSupply.dto.Datedto;
 import com.cts.pharmacyMedicineSupply.dto.RepSchedule;
 
-@FeignClient(url="localhost:8081/medicalrep", name="medicalrepresentative")
+//@FeignClient(url="localhost:8081/medicalrep", name="medicalrepresentative")
+@FeignClient(url="ij021-pod3-lb-388512216.us-east-2.elb.amazonaws.com/medicalrep", name="medicalrepresentative")
 public interface MedicalRepMicroServiceFeign {
 
 	@GetMapping("/RepSchedule")
