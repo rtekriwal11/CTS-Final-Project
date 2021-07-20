@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import com.cts.pharmacymedicinesupplymanagementsystem.pharmacysupplymodule.model.AuthResponse;
 
 //@FeignClient(name = "authorization-service", url = "http://localhost:9095/authorization")
-@FeignClient(name = "authorization-service", url = "ij021-pod3-lb-388512216.us-east-2.elb.amazonaws.com/authorization")
+@FeignClient(name = "authorization-service", url = "ij021-pod3-lb-1742857365.us-east-2.elb.amazonaws.com/authorization")
 public interface AuthClient {
 
 	
